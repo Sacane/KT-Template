@@ -40,11 +40,15 @@ def copy_template(template_dir, dest_dir):
     shutil.copytree(template_dir, dest_dir)
 
 def main():
-    project = input("Project name : ").strip()
-    package = input("Main package (ex: com.business.sacane) : ").strip()
+    project = input("Project name: ").strip()
+    package = input("Main package (e.g. com.business.sacane): ").strip()
+    dest_root = input("Destination folder path (e.g. /home/user/projects): ").strip()
+    if not dest_root:
+        dest_root = os.getcwd()
     template_dir = os.path.join(os.path.dirname(__file__), 'Template')
-    dest_dir = os.path.join(os.getcwd(), project)
+    dest_dir = os.path.join(dest_root, project)
     copy_template(template_dir, dest_dir)
+    # Remplacements texte
     replacements = {
         'Template': project,
         'template': project[0].lower() + project[1:],
@@ -52,11 +56,12 @@ def main():
         'com/template/app': package.replace('.', '/'),
     }
     replace_in_tree(dest_dir, replacements)
+    # Déplacer les packages Kotlin
     src_root = os.path.join(dest_dir, 'domain', 'src', 'main', 'kotlin')
     move_kotlin_package(src_root, 'com.template.app', package)
     src_root = os.path.join(dest_dir, 'infrastructure', 'src', 'main', 'kotlin')
     move_kotlin_package(src_root, 'com.template', package)
-    print(f"Project {project} created successfully with package {package}.")
+    print(f"Project {project} has been created in {dest_dir} with package {package}.")
 
 if __name__ == "__main__":
     main()
