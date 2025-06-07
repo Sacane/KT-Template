@@ -41,7 +41,11 @@ def copy_template(template_dir, dest_dir):
 
 def main():
     project = input("Project name: ").strip()
+    if not project:
+        project = 'MyProject'
     package = input("Main package (e.g. com.business.sacane): ").strip()
+    if not package:
+        package = 'com.example.app'
     dest_root = input("Destination folder path (e.g. /home/user/projects): ").strip()
     if not dest_root:
         dest_root = os.getcwd()
