@@ -29,10 +29,10 @@ def move_kotlin_package(src_root, old_package, new_package):
     if os.path.exists(old_path):
         os.makedirs(os.path.dirname(new_path), exist_ok=True)
         shutil.move(old_path, new_path)
-        try:
-            shutil.rmtree(os.path.join(src_root, old_package.split('.')[0]))
-        except Exception:
-            pass
+        parent = os.path.dirname(old_path)
+        while parent != src_root and os.path.isdir(parent) and not os.listdir(parent):
+            os.rmdir(parent)
+            parent = os.path.dirname(parent)
 
 def copy_template(template_dir, dest_dir):
     if os.path.exists(dest_dir):
@@ -55,7 +55,7 @@ def main():
     src_root = os.path.join(dest_dir, 'domain', 'src', 'main', 'kotlin')
     move_kotlin_package(src_root, 'com.template.app', package)
     src_root = os.path.join(dest_dir, 'infrastructure', 'src', 'main', 'kotlin')
-    move_kotlin_package(src_root, 'com.template.app', package)
+    move_kotlin_package(src_root, 'com.template', package)
     print(f"Project {project} created successfully with package {package}.")
 
 if __name__ == "__main__":
