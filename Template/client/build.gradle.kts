@@ -4,7 +4,7 @@ plugins {
   id("com.github.node-gradle.node") version "3.5.1"
 }
 
-group = "com.template.app.client"
+group = "com.template.client"
 
 tasks {
   npmInstall {

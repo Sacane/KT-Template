@@ -48,17 +48,15 @@ def main():
     template_dir = os.path.join(os.path.dirname(__file__), 'Template')
     dest_dir = os.path.join(dest_root, project)
     copy_template(template_dir, dest_dir)
-    # Remplacements texte
     replacements = {
+        'com.template': package,
+        'com/template': package.replace('.', '/'),
         'Template': project,
         'template': project[0].lower() + project[1:],
-        'com.template.app': package,
-        'com/template/app': package.replace('.', '/'),
     }
     replace_in_tree(dest_dir, replacements)
-    # Déplacer les packages Kotlin
     src_root = os.path.join(dest_dir, 'domain', 'src', 'main', 'kotlin')
-    move_kotlin_package(src_root, 'com.template.app', package)
+    move_kotlin_package(src_root, 'com.template', package)
     src_root = os.path.join(dest_dir, 'infrastructure', 'src', 'main', 'kotlin')
     move_kotlin_package(src_root, 'com.template', package)
     print(f"Project {project} has been created in {dest_dir} with package {package}.")
