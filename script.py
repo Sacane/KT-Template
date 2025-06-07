@@ -9,10 +9,10 @@ def run(cmd, cwd=None):
 def replace_in_file(filepath, replacements):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
-    for old, new in replacements.items():
-        content = content.replace(old, new)
-    with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(content)
+        for old, new in replacements.items():
+            content = content.replace(old, new)
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(content)
 
 def replace_in_tree(root, replacements):
     for dirpath, _, filenames in os.walk(root):
@@ -46,16 +46,16 @@ def main():
     dest_dir = os.path.join(os.getcwd(), project)
     copy_template(template_dir, dest_dir)
     replacements = {
-        'GloryConnect': project,
-        'gloryConnect': project[0].lower() + project[1:],
-        'com.gloryConnect.app': package,
-        'com/gloryConnect/app': package.replace('.', '/'),
+        'Template': project,
+        'template': project[0].lower() + project[1:],
+        'com.template.app': package,
+        'com/template/app': package.replace('.', '/'),
     }
     replace_in_tree(dest_dir, replacements)
     src_root = os.path.join(dest_dir, 'domain', 'src', 'main', 'kotlin')
-    move_kotlin_package(src_root, 'com.gloryConnect.app', package)
+    move_kotlin_package(src_root, 'com.template.app', package)
     src_root = os.path.join(dest_dir, 'infrastructure', 'src', 'main', 'kotlin')
-    move_kotlin_package(src_root, 'com.gloryConnect.app', package)
+    move_kotlin_package(src_root, 'com.template.app', package)
     print(f"Project {project} created successfully with package {package}.")
 
 if __name__ == "__main__":

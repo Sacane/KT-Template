@@ -9,7 +9,7 @@ plugins {
     kotlin("plugin.noarg") version "1.9.25"
 }
 
-group = "com.gloryConnect.app.infrastructure"
+group = "com.template.infrastructure"
 version = "0.0.1"
 
 repositories {
@@ -44,7 +44,7 @@ kotlin {
 tasks {
     shadowJar {
         mergeServiceFiles()
-        archiveBaseName.set("GloryConnect")
+        archiveBaseName.set("TemplateApp")
         archiveClassifier.set("")
         archiveVersion.set(project.version.toString())
         destinationDirectory.set(file("$rootDir/executables"))
@@ -64,7 +64,7 @@ tasks {
     }
     jar{
         manifest {
-            attributes["Main-Class"] = "com.gloryConnect.app.infrastructure.GloryConnectApplicationKt"
+            attributes["Main-Class"] = "com.template.app.infrastructure.TemplateApplicationKt"
         }
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     }

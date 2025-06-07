@@ -1,11 +1,11 @@
-package com.gloryConnect.app.infrastructure
+package com.template.app.infrastructure
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class GloryConnectApplication
+class TemplateApplication
 
 fun main(args: Array<String>) {
-	runApplication<GloryConnectApplication>(*args)
+	runApplication<TemplateApplication>(*args)
 }

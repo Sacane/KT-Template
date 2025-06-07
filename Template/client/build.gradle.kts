@@ -4,7 +4,7 @@ plugins {
   id("com.github.node-gradle.node") version "3.5.1"
 }
 
-group = "com.gloryConnect.app.client"
+group = "com.template.app.client"
 
 tasks {
   npmInstall {
@@ -20,9 +20,9 @@ tasks {
 
   register<Copy>("bundle") {
     dependsOn(build)
-    inputs.dir(file("${rootProject.projectDir}/client/dist/glory-connect-client/browser"))
+    inputs.dir(file("${rootProject.projectDir}/client/dist/template-client/browser"))
     outputs.dir(file("${rootProject.projectDir}/infrastructure/src/main/resources/static"))
-    from("${rootProject.projectDir}/client/dist/glory-connect-client/browser")
+    from("${rootProject.projectDir}/client/dist/template-client/browser")
     into("${rootProject.projectDir}/infrastructure/src/main/resources/static")
   }
 

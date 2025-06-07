@@ -1,4 +1,4 @@
-# Glory Connect
+# Template
 
 ## Setup local environment
 
@@ -19,14 +19,14 @@ git clone ...
 Go to the project directory to set up postgres local database and run the docker compose file : 
 
 ```bash
-cd gloryConnect/infrastructure/src/main/resources/db-local
+cd template/infrastructure/src/main/resources/db-local
 docker compose up -d
 ```
 
 Install frontend dependencies:
 
 ```bash
-cd gloryConnect/client
+cd template/client
 npm install
 ```
 ### Run the application
@@ -39,7 +39,7 @@ To run the backend server, run the main-class on your favorite IDE
 To run the frontend server, navigate to the client directory and run:
 
 ```bash
-cd gloryConnect/client
+cd template/client
 npm start
 ```
 

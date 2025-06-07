@@ -4,7 +4,7 @@ plugins {
 	jacoco
 }
 
-group = "com.gloryConnect.app"
+group = "com.template"
 version = "0.0.1"
 
 java {

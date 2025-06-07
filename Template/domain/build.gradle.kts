@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm")
 }
 
-group = "com.gloryConnect.app.domain"
+group = "com.template.domain"
 version = "0.0.1-SNAPSHOT"
 
 repositories {
