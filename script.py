@@ -20,8 +20,10 @@ def replace_in_tree(root, replacements):
             filepath = os.path.join(dirpath, filename)
             try:
                 replace_in_file(filepath, replacements)
-            except Exception:
-                pass
+            except UnicodeDecodeError:
+                continue
+            except Exception as e:
+                print(f"Error processing {filepath}: {e}")
 
 def move_kotlin_package(src_root, old_package, new_package):
     old_path = os.path.join(src_root, *old_package.split('.'))
